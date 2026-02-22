@@ -1,0 +1,36 @@
+---
+const faqs = [
+	{ question: "対応可能な台数に制限はありますか？", answer: "台数に制限はございません。1台から大規模な導入まで柔軟に対応いたします。台数に応じた料金プランもご用意しております。" },
+	{ question: "環境構築にはどのくらいの時間がかかりますか？", answer: "標準的な構成であれば1〜3営業日で完了します。カスタマイズの内容や台数によって変動しますので、詳しくはお問い合わせください。" },
+	{ question: "リモートでの対応は可能ですか？", answer: "はい、リモートでの対応が可能です。リモートデスクトップを利用した環境構築・サポートに対応しております。" },
+	{ question: "料金の目安を教えてください", answer: "構成内容や台数によって異なりますが、まずは無料でお見積りいたします。お気軽にお問い合わせください。" },
+	{ question: "導入後のサポート期間はどのくらいですか？", answer: "標準プランでは導入後3ヶ月間のサポートが含まれています。長期サポートプランもご用意しておりますので、ご相談ください。" },
+	{ question: "既存のMac Miniにも対応できますか？", answer: "はい、既存のMac Miniへの環境構築・セキュリティ設定にも対応しております。現在の環境を確認のうえ、最適なプランをご提案します。" },
+];
+---
+
+<section id="faq" class="py-28 sm:py-36 bg-slate-50 relative overflow-hidden">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+		<div class="max-w-3xl mx-auto text-center mb-20" data-animate="fade-up">
+			<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-200 bg-brand-50 mb-6">
+				<span class="text-xs font-bold tracking-widest text-brand uppercase">FAQ</span>
+			</div>
+			<h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
+				よくある<span class="text-brand">質問</span>
+			</h2>
+		</div>
+		<div class="max-w-3xl mx-auto space-y-3" data-animate="fade-up" data-animate-stagger>
+			{
+				faqs.map((faq) => (
+					<details class="group rounded-2xl border border-slate-200 bg-white hover:border-brand/20 transition-colors overflow-hidden">
+						<summary class="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5 font-semibold text-slate-900 [&::-webkit-details-marker]:hidden">
+							<span>{faq.question}</span>
+							<span class="shrink-0 text-brand transition-transform duration-200 group-open:rotate-180">▼</span>
+						</summary>
+						<div class="border-t border-slate-100 px-6 pb-5 pt-2 text-slate-500 leading-relaxed">{faq.answer}</div>
+					</details>
+				))
+			}
+		</div>
+	</div>
+</section>

@@ -1,0 +1,160 @@
+---
+import Layout from "@/layouts/Layout.astro";
+const base = import.meta.env.BASE_URL || "/";
+// 送信先: .env に PUBLIC_CONTACT_FORM_ACTION を設定（Google Apps Script の Web アプリ URL）
+// 手順は docs/CONTACT_SHEET_SETUP.md を参照
+const formAction = typeof import.meta.env.PUBLIC_CONTACT_FORM_ACTION === "string" && import.meta.env.PUBLIC_CONTACT_FORM_ACTION
+	? import.meta.env.PUBLIC_CONTACT_FORM_ACTION
+	: "#";
+---
+
+<Layout title="お問い合わせ | OpenClaw" description="OpenClaw へのお問い合わせ。Mac Mini 環境構築・セキュリティDDについてご相談ください。">
+	<div class="min-h-screen bg-[#1A1E27]">
+		<!-- ヘッダー: 戻る + サイト名 -->
+		<header class="border-b border-white/10">
+			<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
+				<a href={base} class="no-underline flex items-center gap-2 text-white/90 hover:text-white transition-colors">
+					<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<path d="M19 12H5M12 19l-7-7 7-7" />
+					</svg>
+					<span class="font-semibold">OpenClaw</span>
+				</a>
+			</div>
+		</header>
+
+		<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+				<!-- 左カラム: お問い合わせ案内 -->
+				<div class="lg:sticky lg:top-24">
+					<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand/90 text-white text-xs font-bold tracking-widest uppercase mb-6">
+						お問い合わせ
+					</div>
+					<h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-6">
+						お問い合わせ
+					</h1>
+					<p class="text-slate-300 leading-relaxed mb-10">
+						Mac Mini の環境構築やセキュリティDDについて、お気軽にご相談ください。現役セキュリティエンジニアがご対応します。
+					</p>
+					<div class="mb-10">
+						<h2 class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-4">お問い合わせでわかること</h2>
+						<ul class="space-y-4">
+							<li class="flex gap-3 items-start">
+								<span class="flex-shrink-0 w-6 h-6 rounded-full bg-brand/20 flex items-center justify-center mt-0.5">
+									<svg class="w-3.5 h-3.5 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+								</span>
+								<span class="text-slate-300">環境構築・セキュリティ設定の内容と料金の目安</span>
+							</li>
+							<li class="flex gap-3 items-start">
+								<span class="flex-shrink-0 w-6 h-6 rounded-full bg-brand/20 flex items-center justify-center mt-0.5">
+									<svg class="w-3.5 h-3.5 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+								</span>
+								<span class="text-slate-300">セキュリティDD（デューデリジェンス）の流れ</span>
+							</li>
+							<li class="flex gap-3 items-start">
+								<span class="flex-shrink-0 w-6 h-6 rounded-full bg-brand/20 flex items-center justify-center mt-0.5">
+									<svg class="w-3.5 h-3.5 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+								</span>
+								<span class="text-slate-300">導入から納品・サポートまでのスケジュール感</span>
+							</li>
+							<li class="flex gap-3 items-start">
+								<span class="flex-shrink-0 w-6 h-6 rounded-full bg-brand/20 flex items-center justify-center mt-0.5">
+									<svg class="w-3.5 h-3.5 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+								</span>
+								<span class="text-slate-300">貴社の環境に合わせた無料見積り</span>
+							</li>
+						</ul>
+					</div>
+					<p class="text-sm text-slate-500">
+						まずは、お気軽にご連絡ください。
+					</p>
+				</div>
+
+				<!-- 右カラム: フォーム -->
+				<div class="bg-white rounded-3xl border border-slate-200 shadow-xl p-6 sm:p-8 lg:p-10">
+					<form
+						action={formAction}
+						method="POST"
+						class="space-y-6"
+						id="contact-form"
+						aria-label="お問い合わせフォーム"
+					>
+						<div>
+							<label for="company" class="block text-sm font-semibold text-slate-700 mb-1.5">会社名・組織名 <span class="text-red-500">*</span></label>
+							<input
+								type="text"
+								id="company"
+								name="company"
+								required
+								placeholder="例: 株式会社サンプル"
+								class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand/50 focus:border-brand transition-colors"
+							/>
+						</div>
+						<div>
+							<label for="name" class="block text-sm font-semibold text-slate-700 mb-1.5">お名前 <span class="text-red-500">*</span></label>
+							<input
+								type="text"
+								id="name"
+								name="name"
+								required
+								placeholder="例: 山田 太郎"
+								class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand/50 focus:border-brand transition-colors"
+							/>
+						</div>
+						<div>
+							<label for="email" class="block text-sm font-semibold text-slate-700 mb-1.5">メールアドレス <span class="text-red-500">*</span></label>
+							<input
+								type="email"
+								id="email"
+								name="email"
+								required
+								placeholder="例: taro@example.com"
+								class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand/50 focus:border-brand transition-colors"
+							/>
+						</div>
+						<div>
+							<label for="phone" class="block text-sm font-semibold text-slate-700 mb-1.5">電話番号 <span class="text-slate-400 font-normal">(任意)</span></label>
+							<input
+								type="tel"
+								id="phone"
+								name="phone"
+								placeholder="例: 03-1234-5678"
+								class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand/50 focus:border-brand transition-colors"
+							/>
+						</div>
+						<div>
+							<label for="message" class="block text-sm font-semibold text-slate-700 mb-1.5">お問い合わせ内容 <span class="text-slate-400 font-normal">(任意)</span></label>
+							<textarea
+								id="message"
+								name="message"
+								rows={5}
+								placeholder="ご要件やご質問など、お気軽にご記入ください。"
+								class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand/50 focus:border-brand transition-colors resize-y min-h-[120px]"
+							></textarea>
+						</div>
+						<div class="flex items-start gap-3">
+							<input
+								type="checkbox"
+								id="privacy"
+								name="privacy"
+								required
+								class="mt-1 w-4 h-4 rounded border-slate-300 text-brand focus:ring-brand/50"
+							/>
+							<label for="privacy" class="text-sm text-slate-600 leading-relaxed">
+								<a href="#" class="text-brand hover:underline">プライバシーポリシー</a>に同意する。
+							</label>
+						</div>
+						<div class="pt-2">
+							<button
+								type="submit"
+								class="w-full py-4 px-6 text-base font-semibold text-white bg-brand hover:bg-brand-dark rounded-xl transition-all duration-200 shadow-lg shadow-brand/25 hover:shadow-brand/40 hover:-translate-y-0.5 flex items-center justify-center gap-2"
+							>
+								お問い合わせする
+								<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</main>
+	</div>
+</Layout>

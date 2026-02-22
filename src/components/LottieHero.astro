@@ -1,0 +1,29 @@
+---
+// Robot says hello by Mikhail (LottieFiles)
+// https://lottiefiles.com/free-animation/robot-says-hello-iUyDAnJFQ3
+// 表示するには Lottie JSON をダウンロードして public/animations/robot-hello.json に保存してください。
+---
+
+<div class="flex items-center justify-center w-full">
+	<canvas
+		id="lottie-hero-robot"
+		class="w-[180px] h-[180px] min-[380px]:w-[220px] min-[380px]:h-[220px] sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 max-w-full aspect-square"
+		aria-label="Robot says hello - Lottieアニメーション"
+	></canvas>
+</div>
+
+<script>
+	import { DotLottie } from "@lottiefiles/dotlottie-web";
+
+	const canvas = document.getElementById("lottie-hero-robot");
+	if (canvas instanceof HTMLCanvasElement) {
+		const dotlottie = new DotLottie({
+			canvas,
+			src: "/animations/robot-hello.json",
+			autoplay: true,
+			loop: true,
+			renderer: "canvas",
+		});
+		dotlottie.play();
+	}
+</script>

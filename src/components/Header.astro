@@ -1,0 +1,117 @@
+---
+const base = import.meta.env.BASE_URL || "/";
+---
+
+<header id="main-header" class="fixed top-0 left-0 right-0 z-50 bg-transparent transition-all duration-300">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="flex items-center justify-between h-16 lg:h-20">
+			<a href={base} class="header-logo no-underline flex items-center gap-2" aria-label="OpenClaw">
+				<span class="text-xl font-extrabold tracking-tight text-white transition-colors duration-300">OpenClaw</span>
+			</a>
+
+			<nav class="header-nav hidden lg:flex items-center gap-1" aria-label="メインナビゲーション">
+				<a href="#service" class="nav-link no-underline px-3.5 py-2 text-sm font-medium rounded-lg text-white/80 hover:text-white hover:bg-white/10 transition-all duration-200">サービス内容</a>
+				<a href="#features" class="nav-link no-underline px-3.5 py-2 text-sm font-medium rounded-lg text-white/80 hover:text-white hover:bg-white/10 transition-all duration-200">選ばれる理由</a>
+				<a href="#flow" class="nav-link no-underline px-3.5 py-2 text-sm font-medium rounded-lg text-white/80 hover:text-white hover:bg-white/10 transition-all duration-200">導入フロー</a>
+				<a href="#faq" class="nav-link no-underline px-3.5 py-2 text-sm font-medium rounded-lg text-white/80 hover:text-white hover:bg-white/10 transition-all duration-200">FAQ</a>
+				<a href={`${base}contact`} class="nav-link no-underline px-3.5 py-2 text-sm font-medium rounded-lg text-white/80 hover:text-white hover:bg-white/10 transition-all duration-200">お問い合わせ</a>
+			</nav>
+
+			<div class="header-cta hidden lg:flex items-center gap-3">
+				<a
+href={`${base}contact`}
+				class="no-underline px-5 py-2.5 text-sm font-semibold text-white bg-brand hover:bg-brand-dark rounded-full transition-all duration-200 shadow-lg shadow-brand/25 hover:shadow-brand/40 hover:-translate-y-0.5"
+				>
+					お問い合わせ
+				</a>
+			</div>
+
+			<button
+				id="menu-toggle"
+				class="header-menu-btn lg:hidden p-2 -m-2 text-white hover:opacity-80 transition-opacity focus:outline-none focus:ring-0"
+				type="button"
+				aria-label="メニュー"
+				aria-expanded="false"
+			>
+				<svg id="icon-open" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<path d="M4 6h16M4 12h16M4 18h16" />
+				</svg>
+				<svg id="icon-close" class="hidden h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<path d="M6 18L18 6M6 6l12 12" />
+				</svg>
+			</button>
+		</div>
+	</div>
+
+	<div id="mobile-menu" class="lg:hidden overflow-hidden transition-all duration-300 max-h-0 opacity-0">
+		<div class="bg-white/95 backdrop-blur-xl border-t border-slate-100 shadow-xl">
+			<nav class="px-4 py-4 space-y-1">
+				<a href="#service" class="no-underline block px-4 py-3 text-base font-medium text-slate-700 hover:text-brand hover:bg-brand-50 rounded-xl transition-colors">サービス内容</a>
+				<a href="#features" class="no-underline block px-4 py-3 text-base font-medium text-slate-700 hover:text-brand hover:bg-brand-50 rounded-xl transition-colors">選ばれる理由</a>
+				<a href="#flow" class="no-underline block px-4 py-3 text-base font-medium text-slate-700 hover:text-brand hover:bg-brand-50 rounded-xl transition-colors">導入フロー</a>
+				<a href="#faq" class="no-underline block px-4 py-3 text-base font-medium text-slate-700 hover:text-brand hover:bg-brand-50 rounded-xl transition-colors">FAQ</a>
+				<a href={`${base}contact`} class="no-underline block px-4 py-3 text-base font-semibold text-white bg-brand rounded-xl text-center">お問い合わせ</a>
+			</nav>
+		</div>
+	</div>
+</header>
+
+<script>
+	const toggle = document.getElementById("menu-toggle");
+	const menu = document.getElementById("mobile-menu");
+	const iconOpen = document.getElementById("icon-open");
+	const iconClose = document.getElementById("icon-close");
+
+	toggle?.addEventListener("click", () => {
+		const isOpen = menu?.classList.contains("max-h-0");
+		if (menu) {
+			menu.classList.toggle("max-h-0", !isOpen);
+			menu.classList.toggle("opacity-0", !isOpen);
+			menu.style.maxHeight = isOpen ? "400px" : "0";
+		}
+		iconOpen?.classList.toggle("hidden", isOpen);
+		iconClose?.classList.toggle("hidden", !isOpen);
+		toggle?.setAttribute("aria-expanded", String(isOpen));
+	});
+
+	document.querySelectorAll("#mobile-menu a").forEach((link) => {
+		link.addEventListener("click", () => {
+			menu?.classList.add("max-h-0", "opacity-0");
+			menu?.style.removeProperty("max-height");
+			iconOpen?.classList.remove("hidden");
+			iconClose?.classList.add("hidden");
+			toggle?.setAttribute("aria-expanded", "false");
+		});
+	});
+
+	// スクロールでヘッダーに半透明白背景を付与
+	const header = document.getElementById("main-header");
+	const scrollThreshold = 48;
+
+	function updateHeaderScroll() {
+		if (!header) return;
+		const scrolled = window.scrollY > scrollThreshold;
+		header.classList.toggle("is-scrolled", scrolled);
+	}
+
+	window.addEventListener("scroll", updateHeaderScroll, { passive: true });
+	updateHeaderScroll(); // 初期状態
+</script>
+
+<style is:global>
+	#main-header.is-scrolled {
+		background: rgba(255, 255, 255, 0.92);
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
+		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+	}
+	#main-header.is-scrolled .header-logo span,
+	#main-header.is-scrolled .nav-link,
+	#main-header.is-scrolled .header-menu-btn {
+		color: #0f172a !important;
+	}
+	#main-header.is-scrolled .nav-link:hover {
+		color: #0f172a !important;
+		background: rgba(0, 0, 0, 0.06) !important;
+	}
+</style>

@@ -1,0 +1,71 @@
+---
+const steps = [
+	{ number: "01", title: "お問い合わせ", description: "フォームまたはメールで\nお気軽にご連絡ください。" },
+	{ number: "02", title: "ヒアリング", description: "業務内容や必要な環境について\n詳しくお伺いします。" },
+	{ number: "03", title: "環境構築", description: "ヒアリング内容をもとに\n最適な環境を構築します。" },
+	{ number: "04", title: "セキュリティDD", description: "構築した環境の\nセキュリティDDを実施します。" },
+	{ number: "05", title: "納品・サポート", description: "納品後も\n継続的なサポートを提供します。" },
+];
+---
+
+<section id="flow" class="py-28 sm:py-36 bg-slate-50 relative overflow-hidden">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+		<div class="max-w-3xl mx-auto text-center mb-12" data-animate="fade-up">
+			<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-200 bg-brand-50 mb-6">
+				<span class="text-xs font-bold tracking-widest text-brand uppercase">Flow</span>
+			</div>
+			<h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
+				導入<span class="text-brand">フロー</span>
+			</h2>
+			<p class="mt-6 text-lg text-slate-500 leading-relaxed">
+				お問い合わせから納品まで、明確なステップで進めます
+			</p>
+		</div>
+
+		<div class="max-w-5xl mx-auto" data-animate="fade-up">
+			<div class="bg-white rounded-3xl border border-slate-200 p-8 sm:p-12 shadow-sm">
+				<h3 class="text-center text-sm font-bold text-slate-400 uppercase tracking-widest mb-12" data-animate="fade-up">
+					導入フローの仕組み
+				</h3>
+				{/* デスクトップ（lg以上）: 横並び ステップ→矢印→ステップ→...（ストリーマーで順に表示） */}
+				<div class="hidden lg:flex flex-row items-center justify-center gap-2" data-animate="fade-up" data-animate-stagger>
+					{steps.map((step, i) => (
+						<div class="flex items-center gap-2 flex-1 min-w-0 justify-center">
+							<div class="flex flex-col items-center text-center min-w-[120px]">
+								<div class="w-16 h-16 rounded-2xl bg-brand-50 flex items-center justify-center text-brand flex-shrink-0">
+									<span class="text-xl font-bold">{step.number}</span>
+								</div>
+								<h4 class="mt-4 text-base font-bold text-slate-900">{step.title}</h4>
+								<p class="mt-2 text-xs text-slate-500 leading-relaxed whitespace-pre-line">{step.description}</p>
+							</div>
+							{i < steps.length - 1 && (
+								<svg class="w-6 h-6 text-brand flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+								</svg>
+							)}
+						</div>
+					))}
+				</div>
+				{/* スマホ・タブレット: 縦並び + 下矢印（ストリーマーで順に表示） */}
+				<div class="flex flex-col lg:hidden items-center gap-0" data-animate="fade-up" data-animate-stagger>
+					{steps.map((step, i) => (
+						<div class="flex flex-col items-center w-full">
+							<div class="flex flex-col items-center text-center w-full py-4">
+								<div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-brand-50 flex items-center justify-center text-brand flex-shrink-0">
+									<span class="text-lg sm:text-xl font-bold">{step.number}</span>
+								</div>
+								<h4 class="mt-3 sm:mt-4 text-sm sm:text-base font-bold text-slate-900">{step.title}</h4>
+								<p class="mt-1.5 sm:mt-2 text-xs text-slate-500 leading-relaxed whitespace-pre-line">{step.description}</p>
+							</div>
+							{i < steps.length - 1 && (
+								<svg class="w-5 h-5 text-brand flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+								</svg>
+							)}
+						</div>
+					))}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
