@@ -82,9 +82,15 @@ const formAction = "https://script.google.com/macros/s/あなたのID/exec";
   - **対処**: `scripts/ContactToSheet-replace-return.gs` を開き、その中の **`doPost` 全体**（または最後の `return` ～ の部分）を、Apps Script エディタのコードに合わせて差し替えてください。  
   - ポイントは、返り値を「Success」のテキストではなく、**完了ページへリダイレクトする HTML**（`HtmlService.createHtmlOutput(...)`）にすることです。保存後、**デプロイ** → **デプロイを管理** → 既存のウェブアプリを **編集** → **バージョン: 新バージョン** で再デプロイしてください。
 
-- **送信後に「リダイレクトしています」のまま止まる**  
+- **送信後に「404 There isn't a GitHub Pages site here」と表示される**
+  - **原因**: GAS の `SITE_URL` が誤っていると、存在しないURLへリダイレクトされて 404 になります。
+  - **対処**: Apps Script の `SITE_URL` を **必ず** 次の値にしてください（`/aigateways-lp` を忘れずに）。  
+    `SITE_URL = 'https://aigateways.github.io/aigateways-lp'`  
+    末尾に `/` は付けません。保存後、**デプロイ** → **デプロイを管理** → 既存のウェブアプリを **編集** → **バージョン: 新バージョン** で再デプロイしてください。
+  - あわせて、GitHub の **Settings** → **Pages** で **Source** が **GitHub Actions** になっているか確認してください。
+- **送信後に「リダイレクトしています」のまま止まる**
   - `ContactToSheet.gs` の `SITE_URL` が正しいか確認（末尾の `/` は不要）
-- **スプレッドシートに追記されない**  
+- **スプレッドシートに追記されない**
   - デプロイ時の「アクセスできるユーザー」が **「全員」** になっているか確認
   - 再度デプロイして新しい URL を発行し、`formAction` を更新
 - **403 や CORS エラー**  

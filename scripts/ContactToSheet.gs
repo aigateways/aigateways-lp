@@ -4,8 +4,8 @@
  * セットアップ手順は docs/CONTACT_SHEET_SETUP.md を参照してください。
  */
 
-// ★ デプロイ前に変更: あなたのサイトのURL（送信後にリダイレクトする完了ページのベースURL）
-// GitHub Pages の場合: https://aigateways.github.io/aigateways-lp
+// ★ 送信後のリダイレクト先のベースURL（404 のときはここを確認）
+// プロジェクトサイトなので /aigateways-lp を付ける（末尾スラッシュなし）
 const SITE_URL = 'https://aigateways.github.io/aigateways-lp';
 
 // スプレッドシートID（このシートに追記します）
