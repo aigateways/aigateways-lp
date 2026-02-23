@@ -1,0 +1,138 @@
+---
+import Layout from "@/layouts/Layout.astro";
+const base = import.meta.env.BASE_URL || "/";
+---
+
+<Layout
+	title="プライバシーポリシー | OpenClaw"
+	description="OpenClaw のプライバシーポリシー。個人情報の取り扱いについて定めています。"
+>
+	<div class="min-h-screen bg-slate-50">
+		<header class="bg-white border-b border-slate-200">
+			<div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+				<a href={base} class="no-underline inline-flex items-center gap-2 text-slate-600 hover:text-slate-900 text-sm font-medium mb-4">
+					<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 12H5M12 19l-7-7 7-7m7 7V3" /></svg>
+					トップへ戻る
+				</a>
+				<h1 class="text-2xl sm:text-3xl font-bold text-slate-900">プライバシーポリシー</h1>
+				<p class="mt-2 text-sm text-slate-500">最終更新: 2025年2月</p>
+			</div>
+		</header>
+
+		<main class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+			<div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-10 prose prose-slate prose-headings:font-bold prose-headings:text-slate-900 prose-p:text-slate-600 prose-p:leading-relaxed prose-li:text-slate-600 max-w-none">
+				<section class="mb-10">
+					<h2 class="text-lg font-bold text-slate-900 mt-0 mb-4">1. 事業者およびお問い合わせ窓口</h2>
+					<p class="mt-0">
+						OpenClaw（以下「当方」といいます）は、本プライバシーポリシーに従い、お客様の個人情報を適切に取り扱い、保護することに努めます。個人情報の取り扱いに関するお問い合わせは、本サイトのお問い合わせフォームよりご連絡ください。
+					</p>
+				</section>
+
+				<section class="mb-10">
+					<h2 class="text-lg font-bold text-slate-900 mt-0 mb-4">2. 個人情報の定義</h2>
+					<p class="mt-0">
+						本ポリシーにおいて「個人情報」とは、個人情報の保護に関する法律（個人情報保護法）第2条第1項に定義される生存する個人に関する情報（氏名、生年月日その他の特定の個人を識別することができる情報、ならびに個人識別符号）を指します。また、単独では個人を識別できなくとも、他の情報と照合することで個人を識別できる情報も含みます。
+					</p>
+				</section>
+
+				<section class="mb-10">
+					<h2 class="text-lg font-bold text-slate-900 mt-0 mb-4">3. 取得する個人情報の種類</h2>
+					<p class="mt-0 mb-2">当方は、以下の場面で個人情報を取得することがあります。</p>
+					<ul class="list-disc pl-6 space-y-1">
+						<li><strong>お問い合わせ時</strong>: 会社名・組織名、氏名、メールアドレス、電話番号、お問い合わせ内容</li>
+						<li><strong>サービス提供時</strong>: 上記に加え、業務環境の構成、利用状況、納品先情報等、サービス履行に必要な情報</li>
+						<li><strong>本サイトの利用時</strong>: アクセスログ、Cookie、端末情報（利用を分析する場合）</li>
+					</ul>
+				</section>
+
+				<section class="mb-10">
+					<h2 class="text-lg font-bold text-slate-900 mt-0 mb-4">4. 利用目的</h2>
+					<p class="mt-0 mb-2">取得した個人情報は、以下の目的の範囲内で利用します。</p>
+					<ul class="list-disc pl-6 space-y-1">
+						<li>お問い合わせへの回答、見積り・ご提案のため</li>
+						<li>Mac Mini 環境構築・セキュリティ設定・セキュリティDD（デューデリジェンス）等のサービス提供のため</li>
+						<li>契約の履行、納品、導入後サポートのため</li>
+						<li>サービス改善、品質管理、不正利用・セキュリティリスクの防止のため</li>
+						<li>法令に基づく対応、裁判・紛争対応のため</li>
+						<li>本ポリシーに同意いただいた範囲でのその他の利用</li>
+					</ul>
+				</section>
+
+				<section class="mb-10">
+					<h2 class="text-lg font-bold text-slate-900 mt-0 mb-4">5. 利用の正当な理由および法的根拠</h2>
+					<p class="mt-0">
+						個人情報の取り扱いは、お客様の同意、契約の履行、正当な利益の追求、または法令上の義務に基づいて行います。お問い合わせフォームからの送信は、本ポリシーへの同意を前提としています。
+					</p>
+				</section>
+
+				<section class="mb-10">
+					<h2 class="text-lg font-bold text-slate-900 mt-0 mb-4">6. 保存期間</h2>
+					<p class="mt-0">
+						個人情報は、利用目的の達成に必要な期間、または法令で定められた期間保存します。お問い合わせ内容は、対応完了後、一定期間を経過した時点で適切に削除または匿名化します。サービス契約に係る情報は、契約終了後も法令・契約で定める保存期間に従って保管することがあります。
+					</p>
+				</section>
+
+				<section class="mb-10">
+					<h2 class="text-lg font-bold text-slate-900 mt-0 mb-4">7. 安全管理措置</h2>
+					<p class="mt-0 mb-2">
+						当方は、個人情報の漏えい、滅失、毀損の防止のため、以下の措置を講じます。セキュリティ関連サービスを提供する事業者として、技術的・組織的措置を徹底します。
+					</p>
+					<ul class="list-disc pl-6 space-y-1">
+						<li>個人情報へのアクセス権限の限定、アクセスログの記録</li>
+						<li>データの暗号化、通信の暗号化（TLS/HTTPS）の利用</li>
+						<li>保存媒体・システムのセキュリティ対策、バックアップ</li>
+						<li>委託先の選定・監督、契約による取り扱いの縛り</li>
+						<li>従業員・関係者への教育、秘密保持の徹底</li>
+						<li>事故時の対応手順の整備、是正措置の実施</li>
+					</ul>
+				</section>
+
+				<section class="mb-10">
+					<h2 class="text-lg font-bold text-slate-900 mt-0 mb-4">8. 第三者への提供</h2>
+					<p class="mt-0">
+						お客様の個人情報を、同意なく第三者に提供することはありません。ただし、法令に基づく開示請求、裁判・捜査等の手続き、人の生命・身体・財産の保護に必要な場合、またはお客様の同意がある場合は、この限りではありません。また、サービス提供に必要な範囲で、厳選した委託先（クラウド・通信・決済等の事業者）に預けることがあり、その際は契約により取り扱いを拘束します。
+					</p>
+				</section>
+
+				<section class="mb-10">
+					<h2 class="text-lg font-bold text-slate-900 mt-0 mb-4">9. お客様の権利</h2>
+					<p class="mt-0 mb-2">
+						お客様は、ご自身の個人情報について、開示、訂正・追加・削除、利用停止・消去、第三者提供の停止等を求める権利を有します。請求の方法および対応方針は、お問い合わせ窓口にご連絡いただければお知らせします。法令に反しない範囲で、合理的な期間内に対応します。
+					</p>
+				</section>
+
+				<section class="mb-10">
+					<h2 class="text-lg font-bold text-slate-900 mt-0 mb-4">10. Cookie・アクセス解析</h2>
+					<p class="mt-0">
+						本サイトでは、利便性の向上やアクセス状況の把握のため、Cookie を使用することがあります。Cookie の利用は、本ポリシーおよび当方が別途定める方針に従います。ブラウザの設定により Cookie を無効にすることも可能です（その場合、一部機能が利用できなくなることがあります）。
+					</p>
+				</section>
+
+				<section class="mb-10">
+					<h2 class="text-lg font-bold text-slate-900 mt-0 mb-4">11. 改定</h2>
+					<p class="mt-0">
+						本ポリシーは、法令の変更、サービス内容の変更、または当方の判断に基づき、改定することがあります。重要な変更がある場合は、本サイト上での掲示等によりお知らせします。改定後の利用により、改定後のポリシーに同意したものとみなします。
+					</p>
+				</section>
+
+				<section class="mb-10">
+					<h2 class="text-lg font-bold text-slate-900 mt-0 mb-4">12. お問い合わせ</h2>
+					<p class="mt-0">
+						個人情報の取り扱いに関するご質問・ご請求は、本サイトの<a href={`${base}contact`} class="text-brand hover:underline no-underline font-medium">お問い合わせフォーム</a>よりご連絡ください。ご本人確認のうえ、対応いたします。
+					</p>
+				</section>
+
+				<p class="text-sm text-slate-500 mt-12 pt-8 border-t border-slate-200">
+					以上
+				</p>
+			</div>
+
+			<div class="mt-10 text-center">
+				<a href={base} class="no-underline inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-brand hover:bg-brand-dark rounded-xl transition-colors">
+					トップへ戻る
+					<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+				</a>
+			</div>
+		</main>
+	</div>
+</Layout>
