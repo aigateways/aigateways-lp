@@ -4,36 +4,17 @@
  * セットアップ手順は docs/CONTACT_SHEET_SETUP.md を参照してください。
  */
 
-// ★ 送信後のリダイレクト先のベースURL（404 のときはここを確認）
-// プロジェクトサイトなので /aigateways-lp を付ける（末尾スラッシュなし）
+// ★ デプロイ前に変更: あなたのサイトのURL（送信後にリダイレクトする完了ページのベースURL）
+// GitHub Pages の場合: https://aigateways.github.io/aigateways-lp
 const SITE_URL = 'https://aigateways.github.io/aigateways-lp';
 
 // スプレッドシートID（このシートに追記します）
 // スプレッドシートのURL …/d/【ここがID】/edit の部分
 const SPREADSHEET_ID = '1k3MZfsgQtMWZiaOJ1ZCXC-GWmnTtwojJ9g2Be17kUQg';
 
-/**
- * POST body（application/x-www-form-urlencoded）をパースしてオブジェクトで返す
- * fetch で送信した場合は body が e.parameter に入らないため必要
- */
-function parsePostParams(e) {
-  var params = e.parameter || {};
-  if (e.postData && e.postData.contents) {
-    var body = e.postData.contents;
-    body.split('&').forEach(function(pair) {
-      var i = pair.indexOf('=');
-      if (i === -1) return;
-      var key = decodeURIComponent(pair.substring(0, i).replace(/\+/g, ' '));
-      var val = decodeURIComponent((pair.substring(i + 1) || '').replace(/\+/g, ' '));
-      params[key] = val;
-    });
-  }
-  return params;
-}
-
 function doPost(e) {
   try {
-    var params = parsePostParams(e);
+    var params = e.parameter;
     var spreadsheet = SPREADSHEET_ID
       ? SpreadsheetApp.openById(SPREADSHEET_ID)
       : SpreadsheetApp.getActiveSpreadsheet();
