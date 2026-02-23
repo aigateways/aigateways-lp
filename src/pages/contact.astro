@@ -1,8 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 const base = import.meta.env.BASE_URL || "/";
-// 送信先: Google Apps Script Web アプリ（.env で上書き可）
-// https://script.google.com/macros/s/AKfycbzeZ9HisrevaaWKgRKIDci3ac30CW-BZqx_0Jb_aQD44sGwfMnbsBfVkxO0TBPgTjq8/exec
+// 送信先: Google Apps Script Web アプリ（.env の PUBLIC_CONTACT_FORM_ACTION で上書き可能）
 const formAction =
 	typeof import.meta.env.PUBLIC_CONTACT_FORM_ACTION === "string" && import.meta.env.PUBLIC_CONTACT_FORM_ACTION
 		? import.meta.env.PUBLIC_CONTACT_FORM_ACTION
@@ -71,13 +70,21 @@ const formAction =
 				</div>
 
 				<!-- 右カラム: フォーム -->
-				<div class="bg-white rounded-3xl border border-slate-200 shadow-xl p-6 sm:p-8 lg:p-10">
+				<div class="bg-white rounded-3xl border border-slate-200 shadow-xl p-6 sm:p-8 lg:p-10 relative">
+					<!-- GAS のレスポンスを隠すため iframe に送信し、完了は自サイトへリダイレクト -->
+					<iframe
+						name="contact-form-iframe"
+						title="送信先"
+						class="absolute w-0 h-0 border-0 opacity-0 pointer-events-none"
+						aria-hidden="true"
+					></iframe>
 					<form
-						method="post"
-						action=""
+						action={formAction}
+						method="POST"
 						class="space-y-6"
 						id="contact-form"
 						aria-label="お問い合わせフォーム"
+						target="contact-form-iframe"
 					>
 						<div>
 							<label for="company" class="block text-sm font-semibold text-slate-700 mb-1.5">会社名・組織名 <span class="text-red-500">*</span></label>
@@ -150,8 +157,8 @@ const formAction =
 								id="contact-submit"
 								class="w-full py-4 px-6 text-base font-semibold text-white bg-brand hover:bg-brand-dark rounded-xl transition-all duration-200 shadow-lg shadow-brand/25 hover:shadow-brand/40 hover:-translate-y-0.5 flex items-center justify-center gap-2 disabled:opacity-70 disabled:pointer-events-none"
 							>
-								<span id="submit-label">お問い合わせする</span>
-								<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+								<span id="contact-submit-text">お問い合わせする</span>
+								<svg id="contact-submit-icon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
 							</button>
 						</div>
 					</form>
@@ -160,39 +167,20 @@ const formAction =
 		</main>
 	</div>
 
-	<script define:vars={{ formAction, thanksUrl: base.replace(/\/$/, "") + "/contact/thanks" }}>
-		// GET で付与されたクエリを URL から削除（ブックマーク・共有リンク対策）
-		if (typeof window !== "undefined" && window.location.search) {
-			window.history.replaceState(null, "", window.location.pathname);
+	<script define:vars={{ thanksPath }}>
+		const form = document.getElementById("contact-form");
+		const submitBtn = document.getElementById("contact-submit");
+		const submitText = document.getElementById("contact-submit-text");
+		const submitIcon = document.getElementById("contact-submit-icon");
+		if (form && submitBtn && thanksPath) {
+			form.addEventListener("submit", function () {
+				submitBtn.disabled = true;
+				submitText.textContent = "送信中...";
+				submitIcon.classList.add("animate-pulse");
+				setTimeout(function () {
+					window.location.href = thanksPath;
+				}, 2000);
+			});
 		}
-
-		const form = document.getElementById("contact-form") as HTMLFormElement;
-		const submitBtn = document.getElementById("contact-submit") as HTMLButtonElement;
-		const submitLabel = document.getElementById("submit-label");
-
-		form?.addEventListener("submit", async (ev) => {
-			ev.preventDefault();
-			if (!submitBtn || !submitLabel) return;
-
-			submitBtn.disabled = true;
-			submitLabel.textContent = "送信中...";
-
-			const body = new URLSearchParams(
-				[...new FormData(form)].map(([k, v]) => [k, typeof v === "string" ? v : (v as File).name])
-			).toString();
-
-			try {
-				await fetch(formAction, {
-					method: "POST",
-					headers: { "Content-Type": "application/x-www-form-urlencoded" },
-					body,
-				});
-			} catch {
-				// CORS でレスポンスは読めないがリクエストは送信される
-			}
-
-			// 必ず同一ドメインの完了ページへ遷移（GAS の画面を表示しない）
-			window.location.href = thanksUrl;
-		});
 	</script>
 </Layout>
