@@ -1,5 +1,8 @@
 # お問い合わせを Google スプレッドシートに保存する手順
 
+**GitHub Pages で公開している場合**  
+サイトURLは `https://aigateways.github.io/aigateways-lp` です。Apps Script の `SITE_URL` にこの値を設定してください。
+
 **コマンドラインでの Google ログインは不要です。** ブラウザで Google にログインした状態で、以下の手順を実施してください。
 
 ---
