@@ -35,43 +35,8 @@ const iconStroke = "1.5";
 				セキュリティと信頼で、安心の業務環境を
 			</p>
 		</div>
-		{/* スマホ: 横スクロール（スナップ）で縦長を回避 / タブレット以上: 3列グリッド */}
-		<div class="md:hidden -mx-4 px-4 sm:-mx-6 sm:px-6 overflow-x-auto scrollbar-hide" data-animate="fade-up">
-			<div class="flex gap-4 pb-2 snap-x snap-mandatory">
-				{
-					features.map((feature) => (
-						<div class="flex-[0_0_85%] sm:flex-[0_0_75%] min-w-0 snap-center snap-always group relative bg-white rounded-3xl border border-slate-200 hover:border-brand/30 p-6 transition-all duration-500 hover:shadow-xl hover:shadow-brand/5 overflow-hidden">
-							<div class="absolute inset-0 bg-gradient-to-br from-brand-50/0 to-brand-50/0 group-hover:from-brand-50/50 group-hover:to-emerald-50/30 transition-all duration-500"></div>
-							<div class="relative z-10 flex gap-4 items-start">
-								<div class="w-12 h-12 flex-shrink-0 rounded-2xl bg-brand-50 text-brand flex items-center justify-center group-hover:bg-brand group-hover:text-white transition-all duration-300">
-									{feature.icon === "shield" && (
-										<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width={iconStroke} stroke-linecap="round" stroke-linejoin="round">
-											<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-										</svg>
-									)}
-									{feature.icon === "search" && (
-										<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width={iconStroke} stroke-linecap="round" stroke-linejoin="round">
-											<circle cx="11" cy="11" r="8" />
-											<path d="m21 21-4.35-4.35" />
-										</svg>
-									)}
-									{feature.icon === "phone" && (
-										<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width={iconStroke} stroke-linecap="round" stroke-linejoin="round">
-											<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-										</svg>
-									)}
-								</div>
-								<div class="min-w-0">
-									<h3 class="text-base font-bold text-slate-900 mb-2">{feature.title}</h3>
-									<p class="text-slate-500 leading-relaxed text-sm line-clamp-3">{feature.description}</p>
-								</div>
-							</div>
-						</div>
-					))
-				}
-			</div>
-		</div>
-		<div class="hidden md:grid grid-cols-3 gap-6" data-animate="fade-up" data-animate-stagger>
+		{/* スマホ: 1列で縦並び（サービス内容と同様） / タブレット以上: 3列グリッド */}
+		<div class="grid grid-cols-1 md:grid-cols-3 gap-6" data-animate="fade-up" data-animate-stagger>
 			{
 				features.map((feature) => (
 					<div class="group relative bg-white rounded-3xl border border-slate-200 hover:border-brand/30 p-8 sm:p-10 transition-all duration-500 hover:shadow-2xl hover:shadow-brand/5 hover:-translate-y-1 overflow-hidden">
