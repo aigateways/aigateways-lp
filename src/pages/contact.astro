@@ -1,7 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 const base = import.meta.env.BASE_URL || "/";
-// 送信先: Google Apps Script Web アプリ（.env の PUBLIC_CONTACT_FORM_ACTION で上書き可能）
+// 送信先: Google Apps Script Web アプリ（.env の PUBLIC_CONTACT_FORM_ACTION で上書き可）
 const formAction =
 	typeof import.meta.env.PUBLIC_CONTACT_FORM_ACTION === "string" && import.meta.env.PUBLIC_CONTACT_FORM_ACTION
 		? import.meta.env.PUBLIC_CONTACT_FORM_ACTION
