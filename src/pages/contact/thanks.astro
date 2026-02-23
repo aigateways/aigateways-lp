@@ -3,23 +3,47 @@ import Layout from "@/layouts/Layout.astro";
 const base = import.meta.env.BASE_URL || "/";
 ---
 
-<Layout title="送信完了 | OpenClaw" description="お問い合わせを受け付けました。">
-	<div class="min-h-screen bg-[#1A1E27] flex items-center justify-center px-4">
-		<div class="max-w-md w-full text-center">
-			<div class="w-16 h-16 rounded-full bg-brand/20 flex items-center justify-center mx-auto mb-6">
-				<svg class="w-8 h-8 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-					<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-				</svg>
+<Layout title="お問い合わせ完了 | OpenClaw" description="お問い合わせを受け付けました。">
+	<div class="min-h-screen bg-[#1A1E27]">
+		<header class="border-b border-white/10">
+			<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center">
+				<a href={base} class="no-underline flex items-center gap-2 text-white/90 hover:text-white transition-colors">
+					<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 12H5M12 19l-7-7 7-7m7 7V3" /></svg>
+					<span class="font-semibold">OpenClaw</span>
+				</a>
 			</div>
-			<h1 class="text-2xl font-bold text-white mb-2">送信が完了しました</h1>
-			<p class="text-slate-400 mb-8">お問い合わせいただきありがとうございます。内容を確認のうえ、ご連絡いたします。</p>
-			<a
-				href={base}
-				class="no-underline inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-white bg-brand hover:bg-brand-dark rounded-xl transition-colors"
-			>
-				トップへ戻る
-				<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-			</a>
-		</div>
+		</header>
+
+		<main class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+			<div class="bg-white/5 border border-white/10 rounded-3xl p-8 sm:p-12 text-center">
+				<div class="w-20 h-20 rounded-full bg-brand/20 flex items-center justify-center mx-auto mb-8">
+					<svg class="w-10 h-10 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+					</svg>
+				</div>
+				<h1 class="text-2xl sm:text-3xl font-bold text-white mb-4">お問い合わせを受け付けました</h1>
+				<p class="text-slate-400 leading-relaxed mb-2">
+					このたびはお問い合わせいただき、ありがとうございます。
+				</p>
+				<p class="text-slate-400 leading-relaxed mb-10">
+					内容を確認のうえ、ご登録のメールアドレス宛にご連絡いたします。少々お待ちください。
+				</p>
+				<div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+					<a
+						href={base}
+						class="no-underline inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-white bg-brand hover:bg-brand-dark rounded-xl transition-colors"
+					>
+						トップへ戻る
+						<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+					</a>
+					<a
+						href={`${base}contact`}
+						class="no-underline inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white/90 hover:text-white border border-white/20 hover:border-white/40 rounded-xl transition-colors"
+					>
+						もう一度お問い合わせする
+					</a>
+				</div>
+			</div>
+		</main>
 	</div>
 </Layout>

@@ -4,8 +4,9 @@
  * セットアップ手順は docs/CONTACT_SHEET_SETUP.md を参照してください。
  */
 
-// ★ デプロイ前に変更: あなたのサイトのURL（例: https://example.com）
-const SITE_URL = 'https://your-site.com';
+// ★ デプロイ前に変更: あなたのサイトのURL（送信後にリダイレクトする完了ページのベースURL）
+// GitHub Pages の場合: https://aigateways.github.io/aigateways-lp
+const SITE_URL = 'https://aigateways.github.io/aigateways-lp';
 
 // スプレッドシートID（このシートに追記します）
 // スプレッドシートのURL …/d/【ここがID】/edit の部分
