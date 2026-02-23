@@ -77,6 +77,11 @@ const formAction = "https://script.google.com/macros/s/あなたのID/exec";
 
 ## トラブルシューティング
 
+- **送信後に「Success」とだけ表示される**  
+  - 現在の GAS が `return ContentService.createTextOutput("Success")` になっているためです。  
+  - **対処**: `scripts/ContactToSheet-replace-return.gs` を開き、その中の **`doPost` 全体**（または最後の `return` ～ の部分）を、Apps Script エディタのコードに合わせて差し替えてください。  
+  - ポイントは、返り値を「Success」のテキストではなく、**完了ページへリダイレクトする HTML**（`HtmlService.createHtmlOutput(...)`）にすることです。保存後、**デプロイ** → **デプロイを管理** → 既存のウェブアプリを **編集** → **バージョン: 新バージョン** で再デプロイしてください。
+
 - **送信後に「リダイレクトしています」のまま止まる**  
   - `ContactToSheet.gs` の `SITE_URL` が正しいか確認（末尾の `/` は不要）
 - **スプレッドシートに追記されない**  
