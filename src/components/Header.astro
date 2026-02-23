@@ -28,7 +28,7 @@ href={`${base}contact`}
 
 			<button
 				id="menu-toggle"
-				class="header-menu-btn lg:hidden p-2 -m-2 text-white hover:opacity-80 transition-opacity focus:outline-none focus:ring-0"
+				class="header-menu-btn lg:hidden p-2 -m-2 bg-transparent border-0 text-white hover:opacity-80 transition-opacity focus:outline-none focus:ring-0 focus:bg-transparent active:bg-transparent"
 				type="button"
 				aria-label="メニュー"
 				aria-expanded="false"
@@ -109,6 +109,17 @@ href={`${base}contact`}
 	#main-header.is-scrolled .nav-link,
 	#main-header.is-scrolled .header-menu-btn {
 		color: #0f172a !important;
+	}
+	#main-header.is-scrolled .header-menu-btn,
+	#main-header .header-menu-btn {
+		background: transparent !important;
+		-webkit-appearance: none;
+		appearance: none;
+	}
+	#main-header .header-menu-btn:hover,
+	#main-header .header-menu-btn:focus,
+	#main-header .header-menu-btn:active {
+		background: transparent !important;
 	}
 	#main-header.is-scrolled .nav-link:hover {
 		color: #0f172a !important;
