@@ -10,7 +10,7 @@ const formAction =
 ---
 
 <Layout title="お問い合わせ | OpenClaw" description="OpenClaw へのお問い合わせ。Mac Mini 環境構築・セキュリティDDについてご相談ください。">
-	<div class="min-h-screen bg-[#1A1E27]">
+	<div class="min-h-screen w-full max-w-[100vw] overflow-x-hidden bg-[#1A1E27]">
 		<!-- ヘッダー: 戻る + サイト名 -->
 		<header class="border-b border-white/10">
 			<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
@@ -70,10 +70,10 @@ const formAction =
 					</p>
 				</div>
 
-				<!-- 右カラム: フォーム（min-w-0 でグリッド幅に収め、overflow で右端の白いバーを防止） -->
-				<div class="min-w-0 overflow-x-hidden bg-white rounded-3xl border border-slate-200 shadow-xl relative">
+				<!-- 右カラム: フォーム（スマホで右余白が消えないよう w-full max-w-full で幅を明示） -->
+				<div class="w-full min-w-0 max-w-full overflow-x-hidden bg-white rounded-3xl border border-slate-200 shadow-xl relative">
 					<!-- 左右同じ余白を明示（右側が欠けて見えない不具合を防止） -->
-					<div class="px-6 py-6 sm:px-8 sm:py-8 lg:px-10 lg:py-10 relative">
+					<div class="w-full max-w-full box-border px-5 py-6 sm:px-8 sm:py-8 lg:px-10 lg:py-10 relative">
 					<!-- GAS のレスポンスを隠すため iframe に送信し、完了は自サイトへリダイレクト -->
 					<iframe
 						name="contact-form-iframe"
@@ -84,7 +84,7 @@ const formAction =
 					<form
 						action={formAction}
 						method="POST"
-						class="space-y-6 max-w-full box-border"
+						class="space-y-6 w-full min-w-0 max-w-full box-border"
 						id="contact-form"
 						aria-label="お問い合わせフォーム"
 						target="contact-form-iframe"
@@ -97,7 +97,7 @@ const formAction =
 								name="company"
 								required
 								placeholder="例: 株式会社サンプル"
-								class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand/50 focus:border-brand transition-colors"
+								class="w-full min-w-0 max-w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand/50 focus:border-brand transition-colors box-border"
 							/>
 						</div>
 						<div>
@@ -108,7 +108,7 @@ const formAction =
 								name="name"
 								required
 								placeholder="例: 山田 太郎"
-								class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand/50 focus:border-brand transition-colors"
+								class="w-full min-w-0 max-w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand/50 focus:border-brand transition-colors box-border"
 							/>
 						</div>
 						<div>
@@ -119,7 +119,7 @@ const formAction =
 								name="email"
 								required
 								placeholder="例: taro@example.com"
-								class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand/50 focus:border-brand transition-colors"
+								class="w-full min-w-0 max-w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand/50 focus:border-brand transition-colors box-border"
 							/>
 						</div>
 						<div>
@@ -129,7 +129,7 @@ const formAction =
 								id="phone"
 								name="phone"
 								placeholder="例: 03-1234-5678"
-								class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand/50 focus:border-brand transition-colors"
+								class="w-full min-w-0 max-w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand/50 focus:border-brand transition-colors box-border"
 							/>
 						</div>
 						<div>
@@ -139,7 +139,7 @@ const formAction =
 								name="message"
 								rows={5}
 								placeholder="ご要件やご質問など、お気軽にご記入ください。"
-								class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand/50 focus:border-brand transition-colors resize-y min-h-[120px]"
+								class="w-full min-w-0 max-w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand/50 focus:border-brand transition-colors resize-y min-h-[120px] box-border"
 							></textarea>
 						</div>
 						<div class="flex items-start gap-3">
@@ -158,7 +158,7 @@ const formAction =
 							<button
 								type="submit"
 								id="contact-submit"
-								class="w-full py-4 px-6 text-base font-semibold text-white bg-brand hover:bg-brand-dark rounded-xl transition-all duration-200 shadow-lg shadow-brand/25 hover:shadow-brand/40 hover:-translate-y-0.5 flex items-center justify-center gap-2 disabled:opacity-70 disabled:pointer-events-none"
+								class="w-full min-w-0 max-w-full py-4 px-6 text-base font-semibold text-white bg-brand hover:bg-brand-dark rounded-xl transition-all duration-200 shadow-lg shadow-brand/25 hover:shadow-brand/40 hover:-translate-y-0.5 flex items-center justify-center gap-2 disabled:opacity-70 disabled:pointer-events-none box-border"
 							>
 								<span id="contact-submit-text">お問い合わせする</span>
 								<svg id="contact-submit-icon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
