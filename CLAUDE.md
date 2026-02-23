@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-OpenClaw LP is a Japanese-language static landing page for a Mac Mini environment setup service, built with Astro and deployed to Cloudflare Pages.
+DevClaw LP is a Japanese-language static landing page for a Mac Mini environment setup service, built with Astro and deployed to Cloudflare Pages.
 
 ## Commands
 
