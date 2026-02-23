@@ -179,13 +179,12 @@ const formAction =
 					method: "POST",
 					headers: { "Content-Type": "application/x-www-form-urlencoded" },
 					body,
-					mode: "no-cors",
 				});
 			} catch {
-				// no-cors ではレスポンスを読めないがリクエストは送信される
+				// CORS でレスポンスは読めないがリクエストは送信される
 			}
 
-			// 同一ドメインの完了ページへ遷移（GAS の画面を一切表示しない）
+			// 必ず同一ドメインの完了ページへ遷移（GAS の画面を表示しない）
 			window.location.href = thanksUrl;
 		});
 	</script>

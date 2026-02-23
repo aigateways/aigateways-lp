@@ -12,9 +12,28 @@ const SITE_URL = 'https://aigateways.github.io/aigateways-lp';
 // スプレッドシートのURL …/d/【ここがID】/edit の部分
 const SPREADSHEET_ID = '1k3MZfsgQtMWZiaOJ1ZCXC-GWmnTtwojJ9g2Be17kUQg';
 
+/**
+ * POST body（application/x-www-form-urlencoded）をパースしてオブジェクトで返す
+ * fetch で送信した場合は body が e.parameter に入らないため必要
+ */
+function parsePostParams(e) {
+  var params = e.parameter || {};
+  if (e.postData && e.postData.contents) {
+    var body = e.postData.contents;
+    body.split('&').forEach(function(pair) {
+      var i = pair.indexOf('=');
+      if (i === -1) return;
+      var key = decodeURIComponent(pair.substring(0, i).replace(/\+/g, ' '));
+      var val = decodeURIComponent((pair.substring(i + 1) || '').replace(/\+/g, ' '));
+      params[key] = val;
+    });
+  }
+  return params;
+}
+
 function doPost(e) {
   try {
-    var params = e.parameter;
+    var params = parsePostParams(e);
     var spreadsheet = SPREADSHEET_ID
       ? SpreadsheetApp.openById(SPREADSHEET_ID)
       : SpreadsheetApp.getActiveSpreadsheet();
