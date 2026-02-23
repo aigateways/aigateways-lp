@@ -73,6 +73,8 @@ const formAction =
 				<!-- 右カラム: フォーム -->
 				<div class="bg-white rounded-3xl border border-slate-200 shadow-xl p-6 sm:p-8 lg:p-10">
 					<form
+						method="post"
+						action=""
 						class="space-y-6"
 						id="contact-form"
 						aria-label="お問い合わせフォーム"
@@ -159,6 +161,11 @@ const formAction =
 	</div>
 
 	<script define:vars={{ formAction, thanksUrl: base.replace(/\/$/, "") + "/contact/thanks" }}>
+		// GET で付与されたクエリを URL から削除（ブックマーク・共有リンク対策）
+		if (typeof window !== "undefined" && window.location.search) {
+			window.history.replaceState(null, "", window.location.pathname);
+		}
+
 		const form = document.getElementById("contact-form") as HTMLFormElement;
 		const submitBtn = document.getElementById("contact-submit") as HTMLButtonElement;
 		const submitLabel = document.getElementById("submit-label");
