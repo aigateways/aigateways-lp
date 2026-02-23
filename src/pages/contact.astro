@@ -1,11 +1,11 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 const base = import.meta.env.BASE_URL || "/";
-// 送信先: .env に PUBLIC_CONTACT_FORM_ACTION を設定（Google Apps Script の Web アプリ URL）
-// 手順は docs/CONTACT_SHEET_SETUP.md を参照
-const formAction = typeof import.meta.env.PUBLIC_CONTACT_FORM_ACTION === "string" && import.meta.env.PUBLIC_CONTACT_FORM_ACTION
-	? import.meta.env.PUBLIC_CONTACT_FORM_ACTION
-	: "#";
+// 送信先: Google Apps Script Web アプリ（.env の PUBLIC_CONTACT_FORM_ACTION で上書き可能）
+const formAction =
+	typeof import.meta.env.PUBLIC_CONTACT_FORM_ACTION === "string" && import.meta.env.PUBLIC_CONTACT_FORM_ACTION
+		? import.meta.env.PUBLIC_CONTACT_FORM_ACTION
+		: "https://script.google.com/macros/s/AKfycbzeZ9HisrevaaWKgRKIDci3ac30CW-BZqx_0Jb_aQD44sGwfMnbsBfVkxO0TBPgTjq8/exec";
 ---
 
 <Layout title="お問い合わせ | OpenClaw" description="OpenClaw へのお問い合わせ。Mac Mini 環境構築・セキュリティDDについてご相談ください。">
