@@ -23,8 +23,8 @@ const formAction =
 			</div>
 		</header>
 
-		<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
-			<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+		<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16 overflow-x-hidden">
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start min-w-0">
 				<!-- 左カラム: お問い合わせ案内 -->
 				<div class="lg:sticky lg:top-24">
 					<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand/90 text-white text-xs font-bold tracking-widest uppercase mb-6">
@@ -70,8 +70,8 @@ const formAction =
 					</p>
 				</div>
 
-				<!-- 右カラム: フォーム -->
-				<div class="bg-white rounded-3xl border border-slate-200 shadow-xl p-6 sm:p-8 lg:p-10 relative">
+				<!-- 右カラム: フォーム（min-w-0 でグリッド幅に収め、overflow で右端の白いバーを防止） -->
+				<div class="min-w-0 overflow-x-hidden bg-white rounded-3xl border border-slate-200 shadow-xl p-6 sm:p-8 lg:p-10 relative">
 					<!-- GAS のレスポンスを隠すため iframe に送信し、完了は自サイトへリダイレクト -->
 					<iframe
 						name="contact-form-iframe"
